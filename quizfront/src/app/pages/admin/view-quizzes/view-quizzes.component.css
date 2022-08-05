@@ -1,0 +1,8 @@
+.quiz-logo {
+  background-image: url('../../../../assets/quiz.png');
+  background-size: cover;
+}
+
+.mat-card, .mat-focus-indicator,  .mt10, .mr20, .ml20{
+  margin-top: 30px;
+}

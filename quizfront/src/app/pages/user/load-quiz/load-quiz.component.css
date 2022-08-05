@@ -1,0 +1,16 @@
+.truncate {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.example-header-image {
+    background-image: url("/assets/quiz1.png");
+    background-size: cover;
+}
+
+.mat-card, .mat-focus-indicator, .mb20{
+    margin-top: 30px;
+}
