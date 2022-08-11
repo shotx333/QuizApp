@@ -1,18 +1,35 @@
 .profile-image {
     max-width: 150px;
     max-height: 150px;
-    border: 2px solid rgb(199, 55, 55);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
     border-radius: 50%;
+    border: 2px solid rgb(199, 55, 55);
+
+    box-shadow: 0px 0px 10px #000000;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease
 }
 
 .table {
-
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; 
+
 }
 
 .table tr td {
-    padding: 15px 10px;
+    padding: 10px;
     border: 0.5px solid #e2e2e2;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #000;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
 
 }

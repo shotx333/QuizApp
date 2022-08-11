@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="accent">
     <div class="icon-wrapper">
     <a routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu_book</mat-icon>
@@ -30,7 +30,7 @@
         Logout
     </a>
 
-    <button *ngIf="isLoggedIn && user" class="example-icon favorite-icon ml20" mat-button routerLink="/admin/profile"
+    <button *ngIf="isLoggedIn && user && isAdmin" class="example-icon favorite-icon ml20" mat-button routerLink="/admin/profile"
         aria-label="Example icon-button with heart icon">
 
         {{ user.username }}

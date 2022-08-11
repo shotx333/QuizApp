@@ -29,4 +29,27 @@ export class ViewCategoriesComponent implements OnInit {
 
   }
 
+  deleteCategory(cid: any) {
+    Swal.fire({
+      icon: 'info',
+      title: 'Are you sure?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._category.deleteCategory(cid).subscribe({
+          next: (data) => {
+            this.categories = this.categories.filter((category: { cid: any; }) => category.cid != cid);
+            Swal.fire('Success', 'Category deleted successfully', 'success');
+          },
+          error: (error) => {
+            Swal.fire('Error', 'You cannot delete Category which has 1 or more quiz', 'error');
+          }
+        });
+      }
+    });
+
+
+  }
+
 }

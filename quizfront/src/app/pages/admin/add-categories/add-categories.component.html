@@ -7,7 +7,7 @@
 
                     <form (ngSubmit)="formSubmit()">
 
-                        <mat-form-field class="w100" appearance="outline">
+                        <mat-form-field class="w100" appearance="standard">
                             <mat-label>
                                 Title
                             </mat-label>
@@ -16,7 +16,7 @@
                                 [(ngModel)]="category.title" />
                         </mat-form-field>
 
-                        <mat-form-field class="w100" appearance="outline">
+                        <mat-form-field class="w100" appearance= "standard">
                             <mat-label>Description</mat-label>
 
                             <textarea name="description" matInput placeholder="Enter Category Description"
@@ -25,7 +25,7 @@
                         </mat-form-field>
 
                         <div class="container text-center mt15">
-                            <button mat-raised-button color="accent">Add</button>
+                            <button mat-raised-button color="primary">Add</button>
                         </div>
                     </form>
                 </div>

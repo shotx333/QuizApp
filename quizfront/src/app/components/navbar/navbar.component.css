@@ -1,19 +1,30 @@
-.mat-toolbar-row, .mat-toolbar-single-row{
+.mat-toolbar-row,
+.mat-toolbar-single-row {
   justify-content: flex-end;
   padding: 0 65px;
+
 }
 
-.icon-wrapper{
+.icon-wrapper {
   position: absolute;
   left: 10px;
+  top: 10px;
+  cursor: pointer;
 }
 
-.title-text{
+.title-text {
   position: absolute;
   top: 5px;
+  left: 50px;
+  font-size: 20px;
 }
 
-.navbar-wrapper{
+.navbar-wrapper {
   display: flex;
   gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+
 }

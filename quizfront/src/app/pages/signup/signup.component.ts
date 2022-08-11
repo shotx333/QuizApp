@@ -27,7 +27,6 @@ export class SignupComponent implements OnInit {
     console.log(this.user);
 
     if (this.user.username == '' || this.user.password == null) {
-      // alert("Please fill all the fields");
       this._snack.open("Userame is required", '', { duration: 3000 });
       return;
     }
@@ -37,16 +36,21 @@ export class SignupComponent implements OnInit {
     this.userService.addUser(this.user).subscribe({
       next: (data: any) => {
         console.log(data);
-        // alert("User added successfully");
 
         Swal.fire('Success', 'User registered successfully', 'success');
       },
       error: (error) => {
         console.log(error)
-        // alert("Something went wrong"); 
         this._snack.open("Something went wrong", '', { duration: 3000 });
       }
     })
   }
-
+clear(){
+  this.user.username = '';
+  this.user.password = '';
+  this.user.firstName = '';
+  this.user.lastName = '';
+  this.user.email = '';
+  this.user.phone = '';
+}
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
+import { QuizService } from 'src/app/services/quiz.service';
 
 @Component({
   selector: 'app-add-question',
@@ -11,7 +11,10 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
+
   public Editor = ClassicEditor;
+  isPublished: boolean = true;
+  image : any;
   qId: any;
   qTitle: any;
   question: any = {
@@ -27,7 +30,8 @@ export class AddQuestionComponent implements OnInit {
   };
   constructor(
     private _route: ActivatedRoute,
-    private _question: QuestionService
+    private _question: QuestionService,
+    private _quiz: QuizService
   ) { }
 
   ngOnInit(): void {
@@ -36,11 +40,21 @@ export class AddQuestionComponent implements OnInit {
     this.qTitle = this._route.snapshot.params['title'];
     this.question.quiz['qId'] = this.qId;
 
+    this._quiz.getQuiz(this.qId).subscribe({
+      next: (data: any) => {
+        this.isPublished = data.active;
+      }
+    })
   }
 
   formSubmit() {
+
+    if (this.isPublished == true) {
+      Swal.fire("Error","You can't add question to published quiz","error");
+      return;
+    }
     if (this.question.content.trim() == '' || this.question.content == null) {
-      alert('Please enter question content');
+      Swal.fire("Error", 'Please enter question content', "error");
       return;
     }
 
@@ -50,6 +64,15 @@ export class AddQuestionComponent implements OnInit {
     if (this.question.option2.trim() == '' || this.question.option2 == null) {
       return;
     }
+
+    if (this.question.option3.trim() == '' || this.question.option3 == null) {
+      return;
+    }
+
+    if (this.question.option4.trim() == '' || this.question.option4 == null) {
+      return;
+    }
+
     if (this.question.answer.trim() == '' || this.question.answer == null) {
       return;
     }

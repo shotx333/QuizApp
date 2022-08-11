@@ -25,29 +25,26 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- marks -->
                             <mat-form-field class="w100" appearance="fill">
                                 <mat-label>
                                     Maximum marks
                                 </mat-label>
-                                <input [(ngModel)]="quizData.maxMarks" type="text" name="maxMarks"
+                                <input required [(ngModel)]="quizData.maxMarks" type="number" name="maxMarks"
                                     placeholder="Enter here" matInput />
                             </mat-form-field>
                         </div>
                         <div class="col-md-6">
-                            <!-- questions -->
 
                             <mat-form-field class="w100" appearance="fill">
                                 <mat-label>
                                     Number of Question
                                 </mat-label>
-                                <input [(ngModel)]="quizData.numberOfQuestions" type="text" name="numberOfQuestions"
+                                <input required [(ngModel)]="quizData.numberOfQuestions" type="number" name="numberOfQuestions"
                                     placeholder="Enter here" matInput />
                             </mat-form-field>
                         </div>
                     </div>
-                    <mat-slide-toggle name="active" [(ngModel)]="quizData.active" class="mt20">Publish Status
-                    </mat-slide-toggle>
+        
                     <br />
                     <mat-form-field appearance="fill" class="w100">
                         <mat-label>Categories</mat-label>
@@ -58,12 +55,10 @@
                         </mat-select>
                     </mat-form-field>
                     <div class="container txt-center">
-                        <button mat-raised-button color="accent" type="submit">Add</button>
+                        <button mat-raised-button color="primary" type="submit">Add</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </mat-card>
-
-<!-- {{quizData | json}} -->

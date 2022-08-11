@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/services/question.service';
+import { QuizService } from 'src/app/services/quiz.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,12 +12,14 @@ import Swal from 'sweetalert2';
 })
 export class ViewQuizQuestionsComponent implements OnInit {
   qId: any;
+  quiz: any;
   qTitle: any;
   questions: any = [];
   constructor(
     private _route: ActivatedRoute,
     private _question: QuestionService,
-    private _snackbar: MatSnackBar
+    private _snackbar: MatSnackBar,
+    private _quiz: QuizService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +40,12 @@ export class ViewQuizQuestionsComponent implements OnInit {
     console.log(this.qId);
     console.log(this.qTitle);
 
+    this._quiz.getQuiz(this.qId).subscribe({
+      next: (data: any) => {
+        this.quiz = data;
+      }
+    })
+
   }
   deleteQuestion(qid: any) {
     Swal.fire({
@@ -45,7 +54,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
       confirmButtonText: 'Delete',
       title: 'Are you sure you want to delete this question?',
     }).then((result => {
-      if (result.isConfirmed) {
+      if (result.isConfirmed && this.quiz.active == false) {
         this._question.deleteQuestion(qid).subscribe({
           next: (data) => {
             this._snackbar.open('Question deleted successfully', '', {
@@ -62,6 +71,8 @@ export class ViewQuizQuestionsComponent implements OnInit {
           }
 
         })
+      } else if (result.isConfirmed && this.quiz.active) {
+        Swal.fire('Error', 'You cannot delete a question while quiz is published', 'error');
       }
 
     }))

@@ -19,9 +19,9 @@ export class AddQuizComponent implements OnInit {
   quizData = {
     title: '',
     description: '',
-    maxMarks: '',
-    numberOfQuestions: '',
-    active: true,
+    maxMarks: 100,
+    numberOfQuestions: 1,
+    active: false,
     category: {
       cid: ''
 
@@ -52,6 +52,22 @@ export class AddQuizComponent implements OnInit {
       this._snack.open("Title is required", "", { duration: 3000 });
       return;
     }
+
+    if (this.quizData.maxMarks <1) {
+      this._snack.open(" Minimum value of Max Marks should be 1", "", { duration: 3000 });
+      return;
+    }
+
+    if (this.quizData.category.cid == "") {
+      this._snack.open("Category is required", "", { duration: 3000 });
+      return;
+    }
+    if(this.quizData.numberOfQuestions < 1){
+      this._snack.open("Minimum value of Number of questions should be 1", "", { duration: 3000 });
+      return;
+    }
+
+
     this._quiz.addQuiz(this.quizData).subscribe({
       next: (data: any) => {
 
@@ -59,8 +75,8 @@ export class AddQuizComponent implements OnInit {
         this.quizData = {
           title: '',
           description: '',
-          maxMarks: '',
-          numberOfQuestions: '',
+          maxMarks: 100,
+          numberOfQuestions: 1,
           active: true,
           category: {
             cid: ''

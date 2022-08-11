@@ -48,10 +48,6 @@ export class LoginComponent implements OnInit {
             console.log(user);
 
             if (this.login.getUserRole() == 'ADMIN') {
-
-              // 
-              // window.location.href = '/admin';
-
               this.router.navigate(['admin'])
               this.login.loginStatusSubject.next(true);
             } else if (this.login.getUserRole() == 'NORMAL') {
@@ -59,9 +55,6 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['user-dashboard/0'])
               this.login.loginStatusSubject.next(true);
 
-
-
-              // 
               window.location.href = '/user-dashboard/0';
             } else {
               this.login.logout();
@@ -79,5 +72,9 @@ export class LoginComponent implements OnInit {
       }
     }
     );
+  }
+  clear(){
+    this.loginData.username = '';
+    this.loginData.password = '';
   }
 }

@@ -1,6 +1,7 @@
 import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { browserRefresh } from 'src/app/app.component';
 import { QuestionService } from 'src/app/services/question.service';
 import Swal from 'sweetalert2';
 
@@ -38,10 +39,6 @@ export class StartComponent implements OnInit {
       next: (data: any) => {
         this.questions = data;
         this.timer = this.questions.length * 2 * 60;
-        // this.questions.forEach(q => {
-        //   q['givenAnswer'] = '';
-        //   this.startTimer();
-        // });
         console.log(this.questions);
         this.startTimer();
       },
@@ -88,6 +85,9 @@ export class StartComponent implements OnInit {
       }
 
     }, 1000)
+    if (browserRefresh) {
+      this.evalQuiz();
+    }
   }
 
   getFormattedTime() {
