@@ -99,10 +99,10 @@ public class User extends Throwable implements UserDetails {
         Set<Authority> set = new HashSet<>();
 
 
-        this.userRoles.forEach(userRole -> {
-            set.add(new Authority(userRole.getRole().getRoleName()));
+        this.userRoles.forEach(userRole ->
+            set.add(new Authority(userRole.getRole().getRoleName()))
 
-        });
+        );
         return set;
     }
 

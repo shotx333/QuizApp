@@ -6,6 +6,8 @@ import com.example.quiz.model.UserRole;
 import com.example.quiz.repo.RoleRepository;
 import com.example.quiz.repo.UserRepository;
 import com.example.quiz.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -15,8 +17,10 @@ public class UserServiceImpl implements UserService {
 
 
     //    UserDetails
+
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository) {
         this.userRepository = userRepository;
@@ -25,11 +29,10 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception {
+    public User createUser(User user, Set<UserRole> userRoles) throws UserFoundException {
         User local = this.userRepository.findByUsername(user.getUsername());
         if (local != null) {
-
-            System.out.println("User already exists");
+            LOGGER.error("User already exists");
             throw new UserFoundException();
         } else {
 

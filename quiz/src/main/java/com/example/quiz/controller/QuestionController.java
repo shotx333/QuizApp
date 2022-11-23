@@ -4,21 +4,18 @@ import com.example.quiz.model.quiz.Question;
 import com.example.quiz.model.quiz.Quiz;
 import com.example.quiz.service.QuestionService;
 import com.example.quiz.service.QuizService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.OneToMany;
 import java.util.*;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/question")
-//@Transactional
-
 public class QuestionController {
-
+    private static final Logger LOGGER= LoggerFactory.getLogger(QuestionController.class);
     private final QuestionService service;
 
     private final QuizService quizService;
@@ -39,7 +36,7 @@ public class QuestionController {
     }
 
     @GetMapping("/quiz/{qid}")
-    public ResponseEntity<?> getQuestionsOfQuiz(@PathVariable("qid") Long qid) {
+    public ResponseEntity<Object> getQuestionsOfQuiz(@PathVariable("qid") Long qid) {
         Quiz quiz = this.quizService.getQuiz(qid);
         Set<Question> questions = quiz.getQuestions();
         List<Question> list = new ArrayList<>(questions);
@@ -47,13 +44,13 @@ public class QuestionController {
             list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
         }
 
-        list.forEach((q) -> q.setAnswer(""));
+        list.forEach( q -> q.setAnswer(""));
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/quiz/all/{qid}")
-    public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid) {
+    public ResponseEntity<Object> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid) {
         Quiz quiz = new Quiz();
         quiz.setqId(qid);
         Set<Question> questionsOfQuiz = this.service.getQuestionsOfQuiz(quiz);
@@ -72,8 +69,8 @@ public class QuestionController {
     }
 
     @PostMapping("/eval-quiz")
-    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions) {
-        System.out.println(questions);
+    public ResponseEntity<Object> evalQuiz(@RequestBody List<Question> questions) {
+        LOGGER.info("Questions: {}", questions);
         double marksGot = 0;
         int correctAnswers = 0;
         int attempted = 0;
@@ -96,4 +93,5 @@ public class QuestionController {
 
         return ResponseEntity.ok(map);
     }
+
 }

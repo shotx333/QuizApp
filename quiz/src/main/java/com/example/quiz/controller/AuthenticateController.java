@@ -1,7 +1,6 @@
 package com.example.quiz.controller;
 
 import com.example.quiz.config.JwtUtils;
-import com.example.quiz.helper.UserNotFoundException;
 import com.example.quiz.model.JwtRequest;
 import com.example.quiz.model.JwtResponse;
 import com.example.quiz.model.User;
@@ -32,15 +31,9 @@ public class AuthenticateController {
     }
 
     @PostMapping("/generate-token")
-    public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        try {
+    public ResponseEntity<Object> generateToken(@RequestBody JwtRequest jwtRequest)  {
 
-            authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
-        } catch (UserNotFoundException e) {
-
-            e.printStackTrace();
-            throw new Exception("User not found");
-        }
+        authenticate(jwtRequest.getUsername(), jwtRequest.getPassword());
 
         UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
         String token = this.jwtUtils.generateToken(userDetails);
@@ -48,14 +41,14 @@ public class AuthenticateController {
     }
 
 
-    private void authenticate(String username, String password) throws Exception {
+    private void authenticate(String username, String password) {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
 
         } catch (DisabledException e) {
-            throw new Exception("User is disabled" + e.getMessage());
+            throw new DisabledException("User is disabled" + e.getMessage());
         } catch (BadCredentialsException e) {
-            throw new Exception("Bad credentials" + e.getMessage());
+            throw new BadCredentialsException("Bad credentials" + e.getMessage());
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.quiz.controller;
 
 import com.example.quiz.model.quiz.Category;
+import com.example.quiz.model.quiz.CategoryDto;
 import com.example.quiz.service.CategoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class CategoryController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> addCategory(@RequestBody Category category) {
+    public ResponseEntity<Object> addCategory(@RequestBody Category category) {
         Category category1 = this.categoryService.addCategory(category);
         return ResponseEntity.ok(category1);
     }
@@ -27,7 +28,7 @@ public class CategoryController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getCategories() {
+    public ResponseEntity<Object> getCategories() {
         return ResponseEntity.ok(this.categoryService.getCategories());
     }
 

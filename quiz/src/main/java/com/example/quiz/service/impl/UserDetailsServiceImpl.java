@@ -2,6 +2,8 @@ package com.example.quiz.service.impl;
 
 import com.example.quiz.model.User;
 import com.example.quiz.repo.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private final UserRepository userRepository;
 
     public UserDetailsServiceImpl(UserRepository userRepository) {
@@ -22,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (user == null) {
 
-            System.out.println("User not found");
+            LOGGER.error("User not found");
             throw new UsernameNotFoundException("User not found !!");
         }
         return user;

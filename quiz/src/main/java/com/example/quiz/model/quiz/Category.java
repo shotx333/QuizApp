@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "category")
-public class Category {
+public class     Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore
     private final Set<Quiz> quizzes = new LinkedHashSet<>();

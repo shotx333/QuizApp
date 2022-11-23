@@ -27,12 +27,6 @@ public class Question {
     @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 
-    public Question() {
-    }
-
-    public Long getQuestionId() {
-        return quesId;
-    }
 
     public Long getQuesId() {
         return quesId;

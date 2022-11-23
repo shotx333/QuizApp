@@ -35,7 +35,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getQuestion(Long questionId) {
-        return this.questionRepository.findById(questionId).get();
+        return this.questionRepository.findById(questionId).orElse(null);
     }
 
     @Override
@@ -52,6 +52,6 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question get(Long questionsId) {
-        return this.questionRepository.getOne(questionsId);
+        return this.questionRepository.getReferenceById(questionsId);
     }
 }
