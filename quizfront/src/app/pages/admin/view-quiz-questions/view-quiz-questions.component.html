@@ -1,5 +1,6 @@
-<h1 class="mt20"> Questions of 
-    <b>  {{ qTitle }} </b></h1>
+<h1 class="mt20"> Questions of
+    <strong> {{ qTitle }} </strong>
+</h1>
 
 <div class="bootstrap-wrapper">
     <div class="row">
@@ -14,29 +15,29 @@
                 <mat-card-content>
 
                     <p>
-                        <b>Q {{i+1+")"}} </b> <span class="ml20" [innerHTML]="q.content"></span>
+                        <strong>Q {{i+1+")"}} </strong> <span class="ml20" [innerHTML]="q.content"></span>
                     </p>
 
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <p><b>1)</b>{{q.option1}}</p>
+                                <p><strong>1)</strong>{{q.option1}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p><b>2)</b>{{q.option2}}</p>
+                                <p><strong>2)</strong>{{q.option2}}</p>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
-                                <p><b>3)</b>{{q.option3}}</p>
+                                <p><strong>3)</strong>{{q.option3}}</p>
                             </div>
                             <div class="col-md-6">
-                                <p><b>4)</b>{{q.option4}}</p>
+                                <p><strong>4)</strong>{{q.option4}}</p>
                             </div>
                         </div>
                         <mat-divider></mat-divider>
-                        <p class="mt20"><b>Correct Answer:</b> {{q.answer}}</p>
+                        <p class="mt20"><strong>Correct Answer:</strong> {{q.answer}}</p>
                     </div>
                 </mat-card-content>
 

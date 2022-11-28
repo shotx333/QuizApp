@@ -20,7 +20,7 @@ export class UpdateQuizComponent implements OnInit {
   questions: any = [];
   ngOnInit(): void {
 
- 
+
 
     this.qId = this._route.snapshot.params['qid'];
     this._quiz.getQuiz(this.qId).subscribe(
@@ -52,21 +52,21 @@ export class UpdateQuizComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
-        
+
       }
     })
   }
 
   public updateData() {
 
-   
-    if ( this.quiz.active == true && this.quiz.numberOfQuestions != this.questions.length) {
+
+    if (this.quiz.active == true && this.quiz.numberOfQuestions != this.questions.length) {
       Swal.fire('Error', 'Number of questions does not match', 'error');
       console.log(this.questions.length);
-      
+
       return;
     }
-    if(this.quiz.numberOfQuestions < 1){
+    if (this.quiz.numberOfQuestions < 1) {
       Swal.fire('Error', 'Number of questions should be greater than 0', 'error');
       return;
     }

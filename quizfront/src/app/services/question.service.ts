@@ -36,8 +36,9 @@ export class QuestionService {
   }
 
   public getQuestion(questionId: any) {
-    
-    return this._http.get(`${baseUrl}/question/${questionId}`); }
+
+    return this._http.get(`${baseUrl}/question/${questionId}`);
+  }
 
   public updateQuestion(question: any) {
     return this._http.put(`${baseUrl}/question/`, question);

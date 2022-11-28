@@ -5,6 +5,10 @@
   background-position: center;
 }
 
-.mat-card, .mat-focus-indicator,  .mt10, .mr20, .ml20{
+.mat-card,
+.mat-focus-indicator,
+.mt10,
+.mr20,
+.ml20 {
   margin-top: 30px;
 }

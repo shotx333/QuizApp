@@ -14,7 +14,7 @@ export class AddQuestionComponent implements OnInit {
 
   public Editor = ClassicEditor;
   isPublished: boolean = true;
-  image : any;
+  image: any;
   qId: any;
   qTitle: any;
   question: any = {
@@ -47,10 +47,11 @@ export class AddQuestionComponent implements OnInit {
     })
   }
 
+
   formSubmit() {
 
     if (this.isPublished == true) {
-      Swal.fire("Error","You can't add question to published quiz","error");
+      Swal.fire("Error", "You can't add question to published quiz", "error");
       return;
     }
     if (this.question.content.trim() == '' || this.question.content == null) {

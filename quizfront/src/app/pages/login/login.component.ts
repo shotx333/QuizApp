@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     }
     );
   }
-  clear(){
+  clear() {
     this.loginData.username = '';
     this.loginData.password = '';
   }

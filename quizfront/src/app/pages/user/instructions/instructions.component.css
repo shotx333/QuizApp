@@ -1,7 +1,10 @@
-.mat-card, .mat-focus-indicator, .mt20{
+.mat-card,
+.mat-focus-indicator,
+.mt20 {
     margin-top: 50px;
 }
-.mat-card-content{
+
+.mat-card-content {
     padding: 0;
     padding-left: 0px;
     padding-right: 0px;

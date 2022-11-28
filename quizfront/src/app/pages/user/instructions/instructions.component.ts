@@ -22,8 +22,6 @@ export class InstructionsComponent implements OnInit {
 
     this.qid = this._route.snapshot.params['qid'];
 
-    // console.log(this.qid);
-
     this._quiz.getQuiz(this.qid).subscribe({
       next: (data: any) => {
         console.log(data);
@@ -43,7 +41,7 @@ export class InstructionsComponent implements OnInit {
       confirmButtonText: 'Start',
       icon: 'info',
     }).then((result) => {
-      
+
       if (result.isConfirmed) {
 
         this._router.navigate(['/start/' + this.qid]);

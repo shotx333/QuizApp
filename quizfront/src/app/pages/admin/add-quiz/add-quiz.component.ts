@@ -53,7 +53,7 @@ export class AddQuizComponent implements OnInit {
       return;
     }
 
-    if (this.quizData.maxMarks <1) {
+    if (this.quizData.maxMarks < 1) {
       this._snack.open(" Minimum value of Max Marks should be 1", "", { duration: 3000 });
       return;
     }
@@ -62,7 +62,7 @@ export class AddQuizComponent implements OnInit {
       this._snack.open("Category is required", "", { duration: 3000 });
       return;
     }
-    if(this.quizData.numberOfQuestions < 1){
+    if (this.quizData.numberOfQuestions < 1) {
       this._snack.open("Minimum value of Number of questions should be 1", "", { duration: 3000 });
       return;
     }

@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
     this.navigeteByRole();
   }
 
-  navigeteByRole(){
-    if(this.login.getUserRole() == 'ADMIN'){
-this.router.navigate(['admin'])
-    }else if(this.login.getUserRole() == 'NORMAL'){
+  navigeteByRole() {
+    if (this.login.getUserRole() == 'ADMIN') {
+      this.router.navigate(['admin'])
+    } else if (this.login.getUserRole() == 'NORMAL') {
       this.router.navigate(['user-dashboard/0'])
     }
   }

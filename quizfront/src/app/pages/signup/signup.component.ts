@@ -45,12 +45,12 @@ export class SignupComponent implements OnInit {
       }
     })
   }
-clear(){
-  this.user.username = '';
-  this.user.password = '';
-  this.user.firstName = '';
-  this.user.lastName = '';
-  this.user.email = '';
-  this.user.phone = '';
-}
+  clear() {
+    this.user.username = '';
+    this.user.password = '';
+    this.user.firstName = '';
+    this.user.lastName = '';
+    this.user.email = '';
+    this.user.phone = '';
+  }
 }

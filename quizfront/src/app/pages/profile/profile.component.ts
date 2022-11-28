@@ -14,16 +14,6 @@ export class ProfileComponent implements OnInit {
 
     this.user = this.login.getUser();
 
-    //     this.login.getCurrentUser().subscribe({
-    // next: (user:any)=>{
-    //   this.user=user;
-    // },
-    // error: (error) =>{
-    //   alert('error');
-    // }
-
-    //     });
-
   }
 
 }

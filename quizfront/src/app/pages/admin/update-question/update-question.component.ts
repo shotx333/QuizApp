@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 export class UpdateQuestionComponent implements OnInit {
   public Editor = ClassicEditor;
   quesId = 0;
-  qTitle : any;
+  qTitle: any;
   question: any = { content: '', option1: '', option2: '', option3: '', option4: '', answer: '' };
 
   constructor(

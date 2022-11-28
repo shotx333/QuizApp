@@ -50,11 +50,9 @@ export class StartComponent implements OnInit {
   }
 
   preventBackButton() {
-    // history.pushState(null, null, location.href);
     history.pushState(null, "", location.href);
     this.locationSt.onPopState(() => {
 
-      // history.pushState(null, null, location.href);
       history.pushState(null, "", location.href);
     })
   }

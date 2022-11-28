@@ -12,6 +12,8 @@
     background-position: center;
 }
 
-.mat-card, .mat-focus-indicator, .mb20{
+.mat-card,
+.mat-focus-indicator,
+.mb20 {
     margin-top: 30px;
 }
