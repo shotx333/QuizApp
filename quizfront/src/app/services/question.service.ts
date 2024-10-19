@@ -43,4 +43,10 @@ export class QuestionService {
   public updateQuestion(question: any) {
     return this._http.put(`${baseUrl}/question/`, question);
   }
+
+  public uploadImage(image: File) {
+    const formData = new FormData();
+    formData.append('file', image);
+    return this._http.post(`${baseUrl}/question/upload`, formData, { responseType: 'text' });
+  }
 }

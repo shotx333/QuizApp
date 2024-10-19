@@ -27,6 +27,7 @@ public class Question {
     @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 
+    private String imageUrl;
 
     public Long getQuesId() {
         return quesId;
@@ -108,5 +109,11 @@ public class Question {
         this.quiz = quiz;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
