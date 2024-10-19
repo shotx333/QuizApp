@@ -27,6 +27,7 @@ export class AddQuestionComponent implements OnInit {
     option3: '',
     option4: '',
     answer: '',
+    imageUrl: ''
   };
   constructor(
     private _route: ActivatedRoute,
@@ -78,6 +79,22 @@ export class AddQuestionComponent implements OnInit {
       return;
     }
 
+    if (this.image) {
+      this._question.uploadImage(this.image).subscribe({
+        next: (data: any) => {
+          this.question.imageUrl = data;
+          this.addQuestion();
+        },
+        error: (error) => {
+          Swal.fire("Error", "Error in uploading image", "error");
+        }
+      });
+    } else {
+      this.addQuestion();
+    }
+  }
+
+  addQuestion() {
     this._question.addQuestion(this.question).subscribe({
       next: (data: any) => {
         Swal.fire("Success", "Question Added Successfully. Add Another one", "success");
@@ -87,11 +104,18 @@ export class AddQuestionComponent implements OnInit {
         this.question.option3 = '';
         this.question.option4 = '';
         this.question.answer = '';
+        this.question.imageUrl = '';
       },
       error: (error) => {
         Swal.fire("Error", "Error in adding Question", "error");
       }
-    })
+    });
+  }
+
+  onFileSelected(event: any) {
+    if (event.target.files.length > 0) {
+      this.image = event.target.files[0];
+    }
   }
 
 }
